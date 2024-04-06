@@ -39,7 +39,8 @@ try:
                 tm.update_time()
 
             elif tm.check_time_difference()and not tm.message_sent:
-                sms(user_Location())
+                # sms(user_Location())
+                
                 tm.message_sent = True
 
         elif tm.condition:

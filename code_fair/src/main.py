@@ -1,14 +1,15 @@
 import datetime
 from Location import *
-from kakao import *
+# from kakao import *
 from PyKakao import Message
+from mail import *
 API = Message(service_key = "2e8b2179cbbdcfbf4a32144cdd752e72")
 
 # def home_plus(a):
 #     home = a
 #     return home
-home = (37.4923615,127.0292881)
-
+# home = (37.4923615,127.0292881)
+home = (12,12)
 
 class Timetracker:
     """
@@ -56,13 +57,17 @@ while True:
         if not tm.condition:
             tm.change_condition(True)
             tm.update_time()
+            print("시간 고정")
 
-        # elif tm.check_time_difference()and not tm.message_sent:
-        #     # 조건을 만족했을 때 메시지를 전송하는 코드 구현 부분(미구현(카톡 서버 인증과정에서 오류 발생 하므로 다른 걸 써야함))
-        #     # sms(user_Location()) # 카톡 메세지 발송
-        #     tm.message_sent = True
+        elif tm.check_time_difference()and not tm.message_sent:
+            # 조건을 만족했을 때 메시지를 전송하는 코드 구현 부분(미구현(카톡 서버 인증과정에서 오류 발생 하므로 다른 걸 써야함))
+            # sms(user_Location()) # 카톡 메세지 발송
+            mails(user_Location())
+            tm.message_sent = True
+            print("gmail 보냄")
 
     # 사용자가 지정된 거리 안으로 돌아왔을 경우
     elif tm.condition:
         tm.change_condition(False)
         tm.update_time(False)
+        tm.message_sent = False

@@ -33,6 +33,14 @@ def Location():
     data = json.loads(result.text)
     return data["location"]
 
+load_dotenv(verbose=True)
+url = 'https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCBhBG16Zjr8dJvrrZJpRfOjiq6jWdSzE4'
+data = {
+    'considerIp': True,
+}
+result = requests.post(url, json=data)
+data = json.loads(result.text)
+print( data["location"])
 # 두 지점 사이의 거리 계산
 def Location_home(home):
     """

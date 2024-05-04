@@ -2,9 +2,8 @@ import smtplib
 from email.mime.text import MIMEText
 
 title = "test"
-content = "test"
 receiver="dwkim8155@gmail.com"
-def mail():
+def mails(content):
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
 
     smtp.ehlo()
